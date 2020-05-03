@@ -264,7 +264,10 @@ big {
 	color: #666;
 }
 .container{
-	max-width:1170px;
+	max-width:1370px;
+}
+.wishlist-container{
+	max-width:1370px;
 }
 .overlay{
 	position:relative

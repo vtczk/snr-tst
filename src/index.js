@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import MainPage from './HomePage'
+import WPage from './WishlistPage'
+import LoginPage from './LoginPage'
+import CreatePage from './CreateAccountPage'
+import Cart from './CartPage'
 
 ReactDOM.render(
   <React.StrictMode>
- <MainPage/>
+ <Cart/>
   </React.StrictMode>,
   document.getElementById('root')
 );

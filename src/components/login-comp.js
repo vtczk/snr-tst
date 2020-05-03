@@ -34,15 +34,24 @@ export default class Product extends Component {
                                     <div class="form-group ">
                                         <div class="logindetails">
                                             <label>Email<span>*</span></label>
-                                            <input type="text" name="name" placeholder="" required="required" />
+                                            <input type="text" name="name" placeholder="Email" required="required" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class=" login col-lg-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label>Password<span>*</span></label>
-                                        <input type="text" name="name" placeholder="" required="required" />
+                                        <input type="password" name="name" placeholder="Password" required="required" />
                                     </div>
+                                    <div class="single-widget get-button sign">
+                                        <div class="content">
+                                            <div class="button">
+                                                <a href="#" class="btn">Sign In</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="#" class="attention_color trans_color">Dont't have an account? Register here!</a><br />
                                 </div>
 
 
