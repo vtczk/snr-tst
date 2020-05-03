@@ -7136,7 +7136,9 @@ a.bg-dark:hover {
 
 .mb-0,
 .my-0 {
-    margin-bottom: 0!important
+    margin-bottom: 0;
+    margin: auto;
+    margin-left:10px;
 }
 
 .ml-0,

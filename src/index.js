@@ -8,10 +8,13 @@ import WPage from './WishlistPage'
 import LoginPage from './LoginPage'
 import CreatePage from './CreateAccountPage'
 import Cart from './CartPage'
+import Checkout from './CheckoutPage'
+import Category from './CategoryPage'
+import SinglePage from './SinglePage'
 
 ReactDOM.render(
   <React.StrictMode>
- <Cart/>
+ <SinglePage/>
   </React.StrictMode>,
   document.getElementById('root')
 );
