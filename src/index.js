@@ -11,10 +11,11 @@ import Cart from './CartPage'
 import Checkout from './CheckoutPage'
 import Category from './CategoryPage'
 import SinglePage from './SinglePage'
+import Account from './AccountPage'
 
 ReactDOM.render(
   <React.StrictMode>
- <SinglePage/>
+ <Account/>
   </React.StrictMode>,
   document.getElementById('root')
 );
