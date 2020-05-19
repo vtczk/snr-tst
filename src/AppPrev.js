@@ -3,21 +3,19 @@ import logo from './logo.svg';
 import './HomePage.css';
 
 import Header from "./components/header-comp"
-import HeaderLogin from "./components/header-login-comp"
 import Footer from "./components/footer-comp"
 import Categories from "./components/main-body-comp"
-import Login from "./components/login"
-import CreateAccount from "./components/create-account"
+import ProductListElement from "./components/product-comp"
 
-
-function LoginPage() {
+function AppPrev() {
   return (
     <div className="App">
         <Header/>
-        <Login/>
+       
+        <Categories/>
         <Footer/>
     </div>
   );
 }
 
-export default LoginPage;
+export default AppPrev;

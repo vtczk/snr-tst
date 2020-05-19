@@ -1,8 +1,5 @@
-
-
-
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, {Component} from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 
 import '../css/animate.css';
@@ -17,49 +14,82 @@ import '../css/themify-icons.css';
 import '../css/reset.css';
 
 
+export default class AddReview extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            placeholder: "Enter your review here...",
+            text: ""
+        }
+        ;
+        this.changeText = this.changeText.bind(this);
+        this.cancel = this.cancel.bind(this);
+        this.publishReview = this.publishReview.bind(this);
+    }
+
+    changeText(event) {
+        this.setState({text: event.target.text});
+    }
+
+    cancel() {
+
+        this.setState({text: ""})
+    }
+
+    publishReview() {
+        // id: Long, review: String, stars: Int, userName: String, product: Long
+        let opinion = {
+            id: 0.0,
+            review: "super serio jest",
+            stars: 5.0,
+            userName: "testUser3",
+            product: 1
+        };
+        fetch("http://localhost:9000/opinion",
+            {
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(opinion)
+            }).catch(err => console.log(err));
+        this.props.updateRating()
+    }
 
 
-export default class Description extends Component {
     render() {
         return (
-
-
             <div>
-                <br />
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="well well-sm">
-
-
-                                <div class="row" id="post-review-box" >
-                                    <div class="col-md-12">
-                                        <form accept-charset="UTF-8" action="" method="post">
-                                            <input id="ratings-hidden" name="rating" type="hidden" />
-                                            <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
-                                            <br/>
-                                            <div class="star text-right">
-                                                <span class="fa fa-star "></span>
-                                                <span class="fa fa-star "></span>
-                                                <span class="fa fa-star "></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-
-                                            </div>
-
-                                            <div class="text-right">
-
-
-
-                                                <a class="btn btn-danger btn-sm" href="#" id="close-review-box">
-                                                    <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-                                                <button class="btn  btn-lg" type="submit">Save</button>
-                                            </div>
-                                        </form>
+                <br/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="well well-sm">
+                                <div className="row" id="post-review-box">
+                                    <div className="col-md-12">
+                                        <input id="ratings-hidden" name="rating" type="hidden"/>
+                                        <textarea className="form-control animated" cols="50" id="new-review"
+                                                  name="comment" value={this.state.text} onChange={this.changeText}
+                                                  placeholder={this.state.placeholder}
+                                                  rows="5"></textarea>
+                                        <br/>
+                                        <div className="star text-right">
+                                            <span className="fa fa-star "></span>
+                                            <span className="fa fa-star "></span>
+                                            <span className="fa fa-star "></span>
+                                            <span className="fa fa-star"></span>
+                                            <span className="fa fa-star"></span>
+                                        </div>
+                                        <div className="text-right">
+                                            <a className="btn btn-danger btn-sm" id="close-review-box"
+                                               onClick={this.cancel}>
+                                                <span className="glyphicon glyphicon-remove"></span>Cancel</a>
+                                            <button className="btn  btn-lg" onClick={this.publishReview}>Save</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

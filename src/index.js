@@ -1,26 +1,109 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import * as serviceWorker from './serviceWorker';
-import MainPage from './HomePage'
-import WPage from './WishlistPage'
+import CategoriesPage from './CategoriesPage'
 import LoginPage from './LoginPage'
-import CreatePage from './CreateAccountPage'
+import Register from './RegisterPage'
 import Cart from './CartPage'
 import Checkout from './CheckoutPage'
-import Category from './CategoryPage'
-import SinglePage from './SinglePage'
-import Account from './AccountPage'
+import HomePage from './HomPage'
+import ProductDetailsPage from './ProductDetailsPage'
+import UserPage from './UserPage'
+import Wishlist from './WishlistPage'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import {GlobalContext} from "./components/global-context";
+import AddReview from "./components/add-review";
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        // localStorage.clear();
+        this.state = {
+            user: localStorage.getItem("user"),
+            setUser: this.setUser,
+            cart: this.getFromCart() !== null ? this.getFromCart() : [],
+            addToCart: this.addToCart,
+            deleteFromCart: this.deleteFromCart,
+            setPrice: this.setPrice,
+            getCurrentPrice: this.getCurrentPrice,
+    }
+        ;
+
+
+    }
+
+    setUser = (usr) => {
+        console.log("set function launched");
+        localStorage.setItem("user", usr);
+        this.setState(({
+            user: usr
+        }));
+    };
+
+    getFromCart() {
+        return JSON.parse(localStorage.getItem("cart"))
+    }
+
+    addToCart = (product) => {
+        let index = this.state.cart.findIndex(val => val.id === product.id);
+        if (index === -1) {
+            this.setState(({
+                cart: [...this.state.cart, product]
+            }), () =>
+                localStorage.setItem("cart", JSON.stringify(this.state.cart)));
+        }
+
+    };
+
+    deleteFromCart = (product) => {
+        this.setState(({
+            cart: [...this.state.cart].filter(val => val.id !== product.id)
+        }), () =>
+            localStorage.setItem("cart", JSON.stringify(this.state.cart)));
+    };
+
+    setPrice = (price) => {
+        localStorage.setItem("price", price)
+    };
+
+    getCurrentPrice = () => {
+        let price = localStorage.getItem("price");
+        return price !== undefined ? price : 0
+    };
+    render() {
+        return (
+            <GlobalContext.Provider value={this.state}>
+                <Router>
+                    <Switch>
+
+                        <Route path={"/login"} component={LoginPage}/>
+                        <Route path={"/register"} component={Register}/>
+                        <Route path={"/categories/:id"} component={CategoriesPage}/>
+                        <Route path={"/user/details"} component={UserPage}/>
+                        <Route path={"/wishlist"} component={Wishlist}/>
+                        <Route path={"/cart/checkout"} component={Checkout}/>
+                        <Route path={"/cart"} component={Cart}/>
+                        <Route path={"/product/:id"} component={ProductDetailsPage}/>
+
+                        <Route path={"/"} component={HomePage}/>
+
+                    </Switch>
+                </Router>
+            </GlobalContext.Provider>
+        )
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
- <Account/>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App/>,
+    document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();

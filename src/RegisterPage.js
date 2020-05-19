@@ -1,20 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './HomePage.css';
 
 import Header from "./components/header-comp"
 import Footer from "./components/footer-comp"
-import Body from "./components/main-body-comp"
-import W from "./components/wishlist-comp"
 
-function MainPage() {
+import CreateAccount from "./components/create-account"
+
+
+function Register() {
   return (
     <div className="App">
         <Header/>
-        <Body/>
+        <CreateAccount/>
         <Footer/>
     </div>
   );
 }
 
-export default MainPage;
+export default Register;

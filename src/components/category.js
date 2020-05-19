@@ -15,36 +15,36 @@ import '../css/reset.css';
 
 
 import RecentPost from "./recent-post-comp"
-import Product from "./product-comp"
+import ProductListElement from "./product-comp"
 
-export default class Wishlist extends Component {
+export default class Category extends Component {
     render() {
         return (
 
             <div>
-                <section class="product-area shop-sidebar shop section">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 col-12">
-                                <div class="shop-sidebar">
+                <section className="product-area shop-sidebar shop section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-3 col-md-4 col-12">
+                                <div className="shop-sidebar">
                                 
-                                    <div class="single-widget category">
-                                        <h3 class="title">Categories</h3>
-                                        <ul class="categor-list">
-                                            <li><a href="#">Phones</a></li>
+                                    <div className="single-widget category">
+                                        <h3 className="title">Categories</h3>
+                                        <ul className="categor-list">
+                                            <li><a href="#">Monitors</a></li>
                                             <li><a href="#">Photography</a></li>
                                             <li><a href="#">Headphones</a></li>
                                             <li><a href="#">Home audio</a></li>
                                             <li><a href="#">Video Games</a></li>
-                                            <li><a href="#">Smart Home</a></li>
+                                            <li><a href="#">Laptops</a></li>
                                             <li><a href="#">Office Electronics</a></li>
                                             <li><a href="#">Accessories</a></li>
                                         </ul>
                                     </div>
 
 
-                                    <div class="single-widget recent-post">
-                                        <h3 class="title">Recent post</h3>
+                                    <div className="single-widget recent-post">
+                                        <h3 className="title">Recent post</h3>
 
                                         <RecentPost/>
                                         <RecentPost/> 
@@ -56,14 +56,14 @@ export default class Wishlist extends Component {
 
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-8 col-12">
-                                <div class="row">
-                                
-                                   <Product/>
-                                   <Product/>
-                                   <Product/>
-                                   <Product/>
-                                   <Product/>
+                            <div className="col-lg-9 col-md-8 col-12">
+                                <div className="row">
+
+                                   <ProductListElement/>/
+                                   <ProductListElement/>
+                                   <ProductListElement/>
+                                   <ProductListElement/>
+                                   <ProductListElement/>
                                 </div>
                             </div>
                         </div>

@@ -12,32 +12,47 @@ import '../css/jquery.fancybox.min.css';
 import '../css/style.css';
 import '../css/themify-icons.css';
 import '../css/reset.css';
+import {GlobalContext} from "./global-context";
+import {removeFromWishlist} from "./wishlist-handler"
 
 
 
 
-export default class Wishlist extends Component {
+export default class WishlistRow extends Component {
+    static contextType = GlobalContext;
+    constructor(props) {
+        super(props);
+
+    }
+    addToCart(){
+        console.log("entry");
+        console.log(this.props.product);
+        this.context.addToCart(this.props.product)
+    };
+
+    remove(){
+        removeFromWishlist(1,this.props.product.id);
+    }
     render() {
         return (
 
             <tr>
-                <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#" /></td>
-                <td class="product-des" data-title="Description">
-                    <p class="product-name"><a href="#">Women Dress</a></p>
-                    <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+                <td className="image" data-title="No"><img src={this.props.product.image}  /></td>
+                <td className="product-des" data-title="Description">
+                    <p className="product-name"><a href={"/product/"+this.props.product.id}>{this.props.product.name}</a></p>
                 </td>
-                <td class="price" data-title="Price"><span>$110.00 </span></td>
-                <td class="total-amount" data-title="Stock"><span>In stock</span></td>
-                <td class="qty" data-title="Qty">
-                    <div class="input-group">
+                <td className="price" data-title="Price"><span>${this.props.product.price} </span></td>
+                <td className="total-amount" data-title="Stock"><span>In stock</span></td>
+                <td className="qty" data-title="Qty">
+                    <div className="input-group">
                         
-                        <button type="text" name="quant[1]" class="input-number">Add to cart</button>
+                        <button type="text" name="quant[1]" className="input-number" onClick={()=> this.addToCart()}>Add to cart</button>
                         
                     </div>
 
                 </td>
                 
-                <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+                <td className="action" data-title="Remove"><a href="/wishlist" onClick={()=>this.remove()}><i className="ti-trash remove-icon"></i></a></td>
             </tr>
 
         );

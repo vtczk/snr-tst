@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, {Component} from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 
 import '../css/animate.css';
@@ -15,62 +15,72 @@ import '../css/reset.css';
 
 import Row from "./wishlist-row-comp";
 import RecentPost from "./recent-post-comp"
+import {GlobalContext} from "./global-context";
+import CategoriesSidebar from "./categories-sidebar";
 
-function Wishlist() {
+class Wishlist extends Component {
 
-    return (
 
-        <div>
-            <section class="product-area shop-sidebar shop section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-12">
-                            <div class="shop-sidebar">
+    constructor(props) {
+        super(props);
+        this.state = {
+            products: []
+        }
+    }
 
-                                <div class="single-widget category">
-                                    <h3 class="title">Categories</h3>
-                                    <ul class="categor-list">
-                                        <li><a href="#">Phones</a></li>
-                                        <li><a href="#">Photography</a></li>
-                                        <li><a href="#">Headphones</a></li>
-                                        <li><a href="#">Home audio</a></li>
-                                        <li><a href="#">Video Games</a></li>
-                                        <li><a href="#">Smart Home</a></li>
-                                        <li><a href="#">Office Electronics</a></li>
-                                        <li><a href="#">Accessories</a></li>
-                                    </ul>
-                                </div>
+    componentDidMount() {
 
-                                <div class="single-widget recent-post">
-                                    <h3 class="title">Recent post</h3>
-                                    <RecentPost />
-                                    <RecentPost />
-                                    <RecentPost />
+        fetch("http://localhost:9000/favourites/" + 1,
+            {
+                mode: 'cors',
+                method: 'GET'
+            })
+            .then(result => result.json())
+            .then(data => {
+                this.setState({
+                    products: data
+                });
+                console.log(data)
+            })
+    }
+
+
+    render() {
+        return (
+
+            <div>
+                <section className="product-area shop-sidebar shop section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-3 col-md-4 col-12">
+                                <div className="shop-sidebar">
+                                    <CategoriesSidebar/>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-9 col-md-8 col-12">
-                            <div class="row">
-                                <div class="shopping-cart" >
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <table class="table shopping-summery">
-                                                    <thead>
-                                                        <tr class="main-hading">
+                            <div className="col-lg-9 col-md-8 col-12">
+                                <div className="row">
+                                    <div className="shopping-cart">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div className="col-12">
+                                                    <table className="table shopping-summery">
+                                                        <thead>
+                                                        <tr className="main-hading">
                                                             <th>PRODUCT</th>
                                                             <th>NAME</th>
-                                                            <th class="text-center">UNIT PRICE</th>
-                                                            <th class="text-center">STOCK</th>
-                                                            <th class="text-center">ADD ITEM</th>
-                                                            <th class="text-center"><i class="ti-trash remove-icon"></i></th>
+                                                            <th className="text-center">UNIT PRICE</th>
+                                                            <th className="text-center">STOCK</th>
+                                                            <th className="text-center">ADD ITEM</th>
+                                                            <th className="text-center"><i
+                                                                className="ti-trash remove-icon"></i></th>
                                                         </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <Row />
-                                                        <Row />
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+                                                        {this.state.products.map(product => <Row product={product}/>)}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -78,12 +88,13 @@ function Wishlist() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div >
+                </section>
+            </div>
 
-    );
+        );
+    }
 }
+
 export default Wishlist;
 
 

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, {Component} from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 
 import '../css/animate.css';
@@ -12,77 +12,62 @@ import '../css/jquery.fancybox.min.css';
 import '../css/style.css';
 import '../css/themify-icons.css';
 import '../css/reset.css';
-import Product from "./product-comp"
+import ProductListElement from "./product-comp"
+import RecentPost from "./recent-post-comp";
 
 
+class Categories extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            products: [],
+            categoryId: this.props.id
+        }
+    }
 
-function Body() {
-    return (
-        <div>
-            <div class="product ">
-                <div class="container navbar-collapse">
-                    <div class="row navbar-collapse" >
-                        <div class="col-12">
-                            <div class="section-title">
-                                <br />
-                                <h2>Trending Item</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="product-info">
+    componentDidMount() {
+        console.log(this.state.categoryId);
+        fetch("http://localhost:9000/products/category/" + this.state.categoryId,
+            {
+                mode: 'cors',
+                method: 'GET'
+            })
+            .then(result => result.json())
+            .then(data => this.setState({
+                products: data
+            }));
+    };
 
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="man" role="tabpanel">
-                                        <div class="tab-single">
-                                            <div class="row">
-                                                <Product />
-                                                <Product />
-                                                <Product />
-                                                <Product />
-                                            </div>
-                                        </div>
+    render() {
+        return (
+            <div>
+                <section className="product-area shop-sidebar shop section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-3 col-md-4 col-12">
+                                <div className="shop-sidebar">
+                                    <div className="single-widget recent-post">
+                                        <h3 className="title">Top picks in category</h3>
+                                        {this.state.products.map(product => <RecentPost product={product}/>)}
                                     </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-9 col-md-8 col-12">
+                                <div className="row">
+                                    {this.state.products.map(product => <ProductListElement product={product}/>)}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                <br/> <br/> <br/>
+                <br/> <br/> <br/>
             </div>
-
-            <br /> <br /> <br />
-            <section class="cown-down">
-                <div class="section-inner ">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6 col-12 padding-right">
-                                <div class="image">
-                                    <img src="https://via.placeholder.com/750x590" alt="#" />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12 padding-left">
-                                <div class="content">
-                                    <div class="heading-block">
-                                        <p class="small-title">Deal of day</p>
-                                        <h3 class="title">Beatutyful dress for women</h3>
-                                        <p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
-                                        <h1 class="price">$1200 <s>$1890</s></h1>
-                                        <div class="coming-time">
-                                            <div class="clearfix" data-countdown="2021/02/30"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <br /> <br /> <br />
-        </div>
-    );
+        );
+    }
 }
-export default Body;
+
+export default Categories;
 
 
 

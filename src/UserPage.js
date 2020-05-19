@@ -1,21 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './HomePage.css';
 
 import Header from "./components/header-comp"
 import Footer from "./components/footer-comp"
-import Body from "./components/main-body-comp"
-import Product from "./components/product-comp"
+import Account from "./components/user-details"
 
-function App() {
+
+function UserPage() {
   return (
     <div className="App">
         <Header/>
-       
-        <Body/>
+        <Account/>
         <Footer/>
     </div>
   );
 }
 
-export default App;
+export default UserPage;

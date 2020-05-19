@@ -20,54 +20,54 @@ export default class CreateAccount extends Component {
     render() {
         return (
 
-            <section class="shop checkout section">
-                <div class="container">
+            <section className="shop checkout section">
+                <div className="container">
 
-                    <div class=" create col-lg-8 col-12">
-                        <div class="create">
-                            <h2 class="h2create">Create</h2>
-                            <p class="h2create">Sign In to our page</p>
+                    <div className=" create col-lg-8 col-12">
+                        <div className="create">
+                            <h2 className="h2create">Create</h2>
+                            <p className="h2create">Sign In to our page</p>
 
-                            <form class="form" method="post" action="#">
-                                <div class="row">
-                                    <div class=" create col-lg-6 col-md-6 col-12">
-                                        <div class="form-group ">
-                                            <div class="logindetails">
+                            <form className="form" method="post" action="#">
+                                <div className="row">
+                                    <div className=" create col-lg-6 col-md-6 col-12">
+                                        <div className="form-group ">
+                                            <div className="logindetails">
                                                 <label>Username<span>*</span></label>
                                                 <input type="text" name="name" placeholder="" required="required" />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class=" create col-lg-6 col-md-6 col-12">
-                                        <div class="form-group ">
-                                            <div class="logindetails">
+                                    <div className=" create col-lg-6 col-md-6 col-12">
+                                        <div className="form-group ">
+                                            <div className="logindetails">
                                                 <label>Email<span>*</span></label>
                                                 <input type="text" name="name" placeholder="" required="required" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class= "row">
-                                <div class=" create col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
+                                <div className= "row">
+                                <div className=" create col-lg-6 col-md-6 col-12">
+                                    <div className="form-group">
                                         <label>Password<span>*</span></label>
                                         <input type="password" name="name" placeholder="" required="required" />
                                     </div>
                                 </div>
-                                <div class=" create col-lg-6 col-md-6 col-12">
-                                    <div class="form-group">
+                                <div className=" create col-lg-6 col-md-6 col-12">
+                                    <div className="form-group">
                                         <label>Repeat password<span>*</span></label>
                                         <input type="password" name="name" placeholder="" required="required" />
                                     </div>
                                 </div>
                                 </div>
-                                <a href="#" class="attention_color trans_color">Already have an account? Sign In here!</a><br />
+                                <a href="#" className="attention_color trans_color">Already have an account? Sign In here!</a><br />
                                 <br/>
-                                <div class="single-widget get-button create">
-                                        <div class="content">
-                                            <div class="button">
-                                                <a href="#" class="btn">Create</a>
+                                <div className="single-widget get-button create">
+                                        <div className="content">
+                                            <div className="button">
+                                                <a href="#" className="btn">Create</a>
                                             </div>
                                         </div>
                                     </div>
