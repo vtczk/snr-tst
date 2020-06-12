@@ -9,9 +9,7 @@ import {useParams} from "react-router";
 
 function CategoriesPage() {
     let {id} = useParams();
-    // if (id===undefined){
-    //     id =1 ;
-    // }
+
     return (
         <div className="App">
             <Header/>

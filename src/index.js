@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import "../node_modules/font-awesome/css/font-awesome.css"
 
 import * as serviceWorker from './serviceWorker';
 import CategoriesPage from './CategoriesPage'
@@ -18,7 +19,7 @@ import {
     Route,
 } from "react-router-dom";
 import {GlobalContext} from "./components/global-context";
-import AddReview from "./components/add-review";
+import SocialAuthenticator from "./components/authenticator"
 
 class App extends React.Component {
     constructor(props) {
@@ -90,7 +91,7 @@ class App extends React.Component {
                         <Route path={"/cart/checkout"} component={Checkout}/>
                         <Route path={"/cart"} component={Cart}/>
                         <Route path={"/product/:id"} component={ProductDetailsPage}/>
-
+                        <Route path={"/auth/successful/:token"} component={SocialAuthenticator}/>
                         <Route path={"/"} component={HomePage}/>
 
                     </Switch>

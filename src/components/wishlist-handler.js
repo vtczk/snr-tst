@@ -1,23 +1,23 @@
-function removeFromWishlist(userId, productId) {
-    console.log("deleting productt" + productId);
+function removeFromWishlist(token, productId) {
     // const fav = {"userId": userId, productId: productId};
-    fetch('http://localhost:9000/favourites/' + userId + "/" + productId, {
+    fetch('http://localhost:9000/favourites/'+ productId, {
         mode: 'cors',
         method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Auth-Token' : token
+        }
     }).catch(err => console.log("Error while deleting product " + productId))
 }
 
-function addToWishlist(userId, productId) {
-    console.log("adding " + productId);
-    const fav = {user: userId, product: productId};
-    console.log(JSON.stringify(fav));
-    fetch('http://localhost:9000/favourites', {
+function addToWishlist(token, productId) {
+    fetch('http://localhost:9000/favourites/'+productId, {
         mode: 'cors',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(fav),
+            'Content-Type': 'application/json',
+            'X-Auth-Token' : token
+        }
     }).catch(err => console.log("Error while adding to wishlist " + err))
 }
 

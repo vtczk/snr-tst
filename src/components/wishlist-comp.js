@@ -20,7 +20,7 @@ import CategoriesSidebar from "./categories-sidebar";
 
 class Wishlist extends Component {
 
-
+    static contextType = GlobalContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -30,10 +30,13 @@ class Wishlist extends Component {
 
     componentDidMount() {
 
-        fetch("http://localhost:9000/favourites/" + 1,
+        fetch("http://localhost:9000/favourites",
             {
                 mode: 'cors',
-                method: 'GET'
+                method: 'GET',
+                headers:{
+                    'X-Auth-Token':this.context.user
+                }
             })
             .then(result => result.json())
             .then(data => {

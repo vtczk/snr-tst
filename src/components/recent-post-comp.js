@@ -25,7 +25,7 @@ export default class RecentPost extends Component {
 
             <div className="single-post first">
                 <div className="image">
-                    <img src="https://via.placeholder.com/75x75" alt="#"/>
+                    <img src={this.props.product.image} alt="#"/>
                 </div>
                 <div className="content">
                     <h5><a href="#">{this.props.product.name}</a></h5>

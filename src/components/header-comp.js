@@ -32,6 +32,7 @@ class Header extends Component {
         this.categoryItem = this.categoryItem.bind(this);
         this.loginHandler = this.loginHandler.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     expand() {
@@ -72,10 +73,15 @@ class Header extends Component {
         return (<li><a href={"/categories/" + category.id}>{category.name}</a></li>)
     }
 
+    logout(){
+        localStorage.clear();
+        console.log("out");
+        this.props.history.push("/");
+    }
     loginHandler() {
         console.log("user " + this.context.user);
         if (this.context.user !== null) {
-            return (<a href="/">Logout</a>);
+            return (<a onClick={()=>this.logout()}>Logout</a>);
 
         } else {
             return (<a href="/login">Login</a>);
@@ -91,9 +97,6 @@ class Header extends Component {
                 .then(response => response.json()).then(response =>this.props.history.push("/product/"+response.id));
 
         };
-
-
-
 
     render() {
         return (

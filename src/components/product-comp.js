@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 
 import '../css/animate.css';
@@ -13,15 +12,18 @@ import '../css/style.css';
 import '../css/themify-icons.css';
 import '../css/reset.css';
 import {addToWishlist} from "./wishlist-handler";
+import {GlobalContext} from "./global-context";
 
 
 export default class ProductListElement extends Component {
+    static contextType = GlobalContext;
+
     constructor(props) {
         super(props)
     }
 
     addToWishListHandler() {
-        addToWishlist(1, this.props.product.id);
+        addToWishlist(this.context.user, this.props.product.id);
     }
 
     render() {
@@ -38,11 +40,10 @@ export default class ProductListElement extends Component {
                         <div className="button-head">
                             <div className="product-action">
                                 <a data-toggle="modal" data-target="#exampleModal" title="Quick View"
-                                   href={"/product" + this.props.product.id}><i
-                                    className=" ti-eye"></i><span>Quick Shop</span></a>
-                                <a title="Wishlist" href="/wishlist" onClick={() => this.addToWishListHandler()}><i
-                                    className=" ti-heart "></i><span>Add to Wishlist</span></a>
-
+                                   href={"/product" + this.props.product.id}>
+                                    <i className=" ti-eye"></i><span>Quick Shop</span></a>
+                                <a title="Wishlist" href="/wishlist" onClick={() => this.addToWishListHandler()}>
+                                    <i className=" ti-heart "></i><span>Add to Wishlist</span></a>
                             </div>
                             <div className="product-action-2">
                                 <a title="Add to cart" href="#">Add to cart</a>
