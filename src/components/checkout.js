@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, {Component} from "react";
 
 
 import '../css/animate.css';
@@ -7,7 +6,6 @@ import '../css/bootstrap.css';
 import '../css/font-awesome.css';
 
 import '../css/flex-slider.min.css';
-//import '../css/jquery-ui.css';
 import '../css/jquery.fancybox.min.css';
 import '../css/style.css';
 import '../css/themify-icons.css';
@@ -15,16 +13,12 @@ import '../css/reset.css';
 import {GlobalContext} from "./global-context";
 
 
-
-
 export default class Checkout extends Component {
     static contextType = GlobalContext;
+
     render() {
         return (
-
             <div>
-
-
                 <div className="breadcrumbs">
                     <div className="container">
                         <div className="row">
@@ -39,7 +33,6 @@ export default class Checkout extends Component {
                         </div>
                     </div>
                 </div>
-
                 <section className="shop checkout section">
                     <div className="container">
                         <div className="row">
@@ -53,50 +46,52 @@ export default class Checkout extends Component {
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>First Name<span>*</span></label>
-                                                    <input type="text" name="name" placeholder="" required="required" />
+                                                    <input type="text" name="name" placeholder="" required="required"/>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>Last Name<span>*</span></label>
-                                                    <input type="text" name="name" placeholder="" required="required" />
+                                                    <input type="text" name="name" placeholder="" required="required"/>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>Email Address<span>*</span></label>
-                                                    <input type="email" name="email" placeholder="" required="required" />
+                                                    <input type="email" name="email" placeholder=""
+                                                           required="required"/>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>Phone Number<span>*</span></label>
-                                                    <input type="number" name="number" placeholder="" required="required" />
+                                                    <input type="number" name="number" placeholder=""
+                                                           required="required"/>
                                                 </div>
                                             </div>
 
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>Address<span>*</span></label>
-                                                    <input type="text" name="text" placeholder="" required="required" />
+                                                    <input type="text" name="text" placeholder="" required="required"/>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>Address 2<span></span></label>
-                                                    <input type="text" name="text" placeholder="" required="required" />
+                                                    <input type="text" name="text" placeholder="" required="required"/>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>ZIP<span>*</span><span></span></label>
-                                                    <input type="text" name="text" placeholder="" required="required" />
+                                                    <input type="text" name="text" placeholder="" required="required"/>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-12">
                                                 <div className="form-group">
                                                     <label>Country<span>*</span><span></span></label>
-                                                    <input type="text" name="text" placeholder="" required="required" />
+                                                    <input type="text" name="text" placeholder="" required="required"/>
                                                 </div>
                                             </div>
 
@@ -109,58 +104,59 @@ export default class Checkout extends Component {
                                 <div className="order-details">
 
                                     <div className="single-widget">
-                                        <h2>CART  TOTALS</h2>
+                                        <h2>CART TOTALS</h2>
                                         <div className="content">
                                             <ul>
                                                 <li>Sub Total<span>{this.context.getCurrentPrice()}</span></li>
                                                 <li>(+) Shipping<span>FREE</span></li>
-                                                <li className="last">Total<span>{this.context.getCurrentPrice()}</span></li>
+                                                <li className="last">Total<span>{this.context.getCurrentPrice()}</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <hr />
+                                    <hr/>
                                     <div className="single-widget">
                                         <h2>Payments</h2>
                                         <div className="content">
-                                            
+
                                             <div className="checkbox2">
-                                           
-                                                <label className="checkbox-inline" ><input  type="checkbox" /> Credit card</label>
-                                                <label className="checkbox-inline" ><input  type="checkbox" /> Debit card</label>
-                                                <label className="checkbox-inline" ><input  type="checkbox" /> PayPal</label>
+
+                                                <label className="checkbox-inline"><input type="checkbox"/> Credit card</label>
+                                                <label className="checkbox-inline"><input type="checkbox"/> Debit
+                                                    card</label>
+                                                <label className="checkbox-inline"><input
+                                                    type="checkbox"/> PayPal</label>
                                             </div>
                                         </div>
                                     </div>
-                               
+
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-12">
                                             <div className="form-group">
                                                 <label>Full name on card<span>*</span><span></span></label>
-                                                <input type="text" name="text" placeholder="" required="required" />
+                                                <input type="text" name="text" placeholder="" required="required"/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-12">
                                             <div className="form-group">
                                                 <label>Credit card number<span>*</span><span></span></label>
-                                                <input type="text" name="text" placeholder="" required="required" />
+                                                <input type="text" name="text" placeholder="" required="required"/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-12">
                                             <div className="form-group">
                                                 <label>Expiration<span>*</span><span></span></label>
-                                                <input type="text" name="text" placeholder="" required="required" />
+                                                <input type="text" name="text" placeholder="" required="required"/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-12">
                                             <div className="form-group">
                                                 <label>CVV<span>*</span><span></span></label>
-                                                <input type="text" name="text" placeholder="" required="required" />
+                                                <input type="text" name="text" placeholder="" required="required"/>
                                             </div>
                                         </div>
                                     </div>
-                                    <hr />
-
-
+                                    <hr/>
                                     <div className="single-widget get-button">
                                         <div className="content">
                                             <div className="button">

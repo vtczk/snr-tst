@@ -1,5 +1,4 @@
-import React, {Component} from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import React from "react";
 
 
 import '../css/animate.css';
@@ -17,13 +16,13 @@ import Description from "./product-desc";
 import Reviews from "./product-reviews"
 import AddReview from "./add-review"
 import {GlobalContext} from "./global-context";
-import { withRouter } from 'react-router-dom';
-import fetchCategories from "./categories-handler";
+import {withRouter} from 'react-router-dom';
 import CategoriesSidebar from "./categories-sidebar";
 
 
 class ProductDetails extends React.Component {
     static contextType = GlobalContext;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -35,8 +34,8 @@ class ProductDetails extends React.Component {
                 "id": 1,
                 "category": 1
             },
-            rating : 0,
-            categories:[]
+            rating: 0,
+            categories: []
         };
         this.setSection = this.setSection.bind(this);
         this.starRating = this.starRating.bind(this);
@@ -45,7 +44,7 @@ class ProductDetails extends React.Component {
     }
 
     componentDidMount() {
-           fetch("http://localhost:9000/products/" + this.props.id,
+        fetch("http://localhost:9000/products/" + this.props.id,
             {
                 mode: 'cors',
                 method: 'GET'
@@ -58,9 +57,9 @@ class ProductDetails extends React.Component {
         this.updateRating();
 
 
-
     }
-    updateRating(){
+
+    updateRating() {
         fetch("http://localhost:9000/opinion/rating/" + this.props.id,
             {
                 mode: 'cors',
@@ -94,59 +93,43 @@ class ProductDetails extends React.Component {
         return (
             <div className="content">
                 <ul className="reviews2">
-
                     {
                         this.starAmount()
                     }
-
-        {/*<span*/}
-            {/*className="fa fa-star checked "></span>*/}
-                    {/*<span*/}
-                        {/*className="fa fa-star checked"></span>*/}
-                    {/*<span*/}
-                        {/*className="fa fa-star "></span>*/}
-                    {/*<span*/}
-                        {/*className="fa fa-star"></span>*/}
-                    {/*<span*/}
-                        {/*className="fa fa-star"></span>*/}
-
-
                 </ul>
             </div>
         )
     }
-    starAmount(){
-        let result = [];
-        for (let i = 1 ; i<=5 ;i++){
-           if(i <= this.state.rating){
-               result.push(  <span className="fa fa-star checked "></span>)
 
-           }
-           else {
-               result.push(<span className="fa fa-star "></span>)
-           }
+    starAmount() {
+        let result = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= this.state.rating) {
+                result.push(<span className="fa fa-star checked "></span>)
+
+            }
+            else {
+                result.push(<span className="fa fa-star "></span>)
+            }
         }
         return result
     }
-    addToCart(){
+
+    addToCart() {
         this.context.addToCart(this.state.product);
         this.props.history.push("/cart")
     }
 
     render() {
-
-
         return (
-
             <div>
-
                 <section className="product-area shop-sidebar shop section">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-4 col-12">
                                 <div className="shop-sidebar">
 
-                                <CategoriesSidebar/>
+                                    <CategoriesSidebar/>
 
                                 </div>
                             </div>
@@ -168,7 +151,7 @@ class ProductDetails extends React.Component {
                                                                             <div className="product-img">
                                                                                 <a href="product-details.html">
                                                                                     <img className="default-img"
-                                                                                         // src="https://via.placeholder.com/550x750"
+                                                                                        // src="https://via.placeholder.com/550x750"
                                                                                          src={this.state.product.image}
                                                                                          alt="#"/>
 
@@ -259,7 +242,7 @@ class ProductDetails extends React.Component {
                                                                                         className="single-widget get-button sign">
                                                                                         <div className="content">
                                                                                             <div className="button">
-                                                                                                <a onClick={()=>this.addToCart()}
+                                                                                                <a onClick={() => this.addToCart()}
                                                                                                    className="btn">Buy
                                                                                                     Now</a>
                                                                                             </div>

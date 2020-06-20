@@ -6,7 +6,6 @@ import '../css/bootstrap.css';
 import '../css/font-awesome.css';
 
 import '../css/flex-slider.min.css';
-//import '../css/jquery-ui.css';
 import '../css/jquery.fancybox.min.css';
 import '../css/style.css';
 import '../css/themify-icons.css';
@@ -16,11 +15,11 @@ import {GlobalContext} from "./global-context";
 
 export default class CartRow extends Component {
     static contextType = GlobalContext;
+
     constructor(props) {
         super(props);
         this.state = {
             quantity: 1,
-            // productId:this.props.product.id
         }
 
     }
@@ -28,7 +27,6 @@ export default class CartRow extends Component {
 
     incrementQuanity() {
         this.setState((prevState, props) => {
-            // props.setPrice(props.id,this.totalPrice());
             return ({
                 quantity: prevState.quantity + 1
             })
@@ -55,11 +53,12 @@ export default class CartRow extends Component {
         return (this.state.quantity * this.props.product.price).toFixed(2)
     }
 
-    delete(){
+    delete() {
         console.log(this.context);
         this.context.deleteFromCart(this.props.product);
         window.location.reload()
     }
+
     render() {
         return (
 
@@ -91,7 +90,8 @@ export default class CartRow extends Component {
 
                 </td>
                 <td className="total-amount" data-title="Total"><span>${this.totalPrice()}</span></td>
-                <td className="action" data-title="Remove"><a ><i className="ti-trash remove-icon" onClick={()=>this.delete()}></i></a></td>
+                <td className="action" data-title="Remove"><a><i className="ti-trash remove-icon"
+                                                                 onClick={() => this.delete()}></i></a></td>
             </tr>
         );
     }

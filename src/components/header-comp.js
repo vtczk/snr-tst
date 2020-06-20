@@ -1,20 +1,16 @@
 import React, {Component} from "react";
-
-
 import '../css/animate.css';
 import '../css/bootstrap.css';
 import '../css/font-awesome.css';
 
 import '../css/flex-slider.min.css';
-//import '../css/jquery-ui.css';
 import '../css/jquery.fancybox.min.css';
 import '../css/style.css';
 import '../css/themify-icons.css';
 import '../css/reset.css';
 import {GlobalContext} from "./global-context";
 import fetchCategories from "./categories-handler";
-import Redirect from "react-router-dom/es/Redirect";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class Header extends Component {
 
@@ -25,7 +21,7 @@ class Header extends Component {
         this.state = {
             active: false,
             categories: [{name: "test"}],
-            searchText:""
+            searchText: ""
         };
         this.expand = this.expand.bind(this);
         this.categories = this.categories.bind(this);
@@ -42,9 +38,9 @@ class Header extends Component {
 
 
     componentDidMount() {
-       fetchCategories().then(data => this.setState({
-                categories: data
-            }))
+        fetchCategories().then(data => this.setState({
+            categories: data
+        }))
     }
 
     categories() {
@@ -52,19 +48,6 @@ class Header extends Component {
             <ul className="main-category">
                 {this.state.categories.map(category => this.categoryItem(category)
                 )}
-                {/*<li><a href="#">Computers </a>*/}
-
-                {/*</li>*/}
-                {/*<li className="main-mega"><a href="#">TV & Video </a>*/}
-                {/*</li>*/}
-
-                {/*<li><a href="#">Photography</a></li>*/}
-                {/*<li><a href="#">Headphones</a></li>*/}
-                {/*<li><a href="#">Home audio</a></li>*/}
-                {/*<li><a href="#">Video Games</a></li>*/}
-                {/*<li><a href="#">Smart Home</a></li>*/}
-                {/*<li><a href="#">Office Electronics</a></li>*/}
-                {/*<li><a href="#">Accessories</a></li>*/}
             </ul>
         )
     }
@@ -73,30 +56,33 @@ class Header extends Component {
         return (<li><a href={"/categories/" + category.id}>{category.name}</a></li>)
     }
 
-    logout(){
+    logout() {
         localStorage.clear();
         console.log("out");
         this.props.history.push("/");
     }
+
     loginHandler() {
         console.log("user " + this.context.user);
         if (this.context.user !== null) {
-            return (<a onClick={()=>this.logout()}>Logout</a>);
+            return (<a onClick={() => this.logout()}>Logout</a>);
 
         } else {
             return (<a href="/login">Login</a>);
         }
 
     }
-    handleChangeText(e){
-        this.setState({searchText:e.target.value})
+
+    handleChangeText(e) {
+        this.setState({searchText: e.target.value})
     }
-    search(){
 
-       fetch("http://localhost:9000/search/"+this.state.searchText)
-                .then(response => response.json()).then(response =>this.props.history.push("/product/"+response.id));
+    search() {
 
-        };
+        fetch("http://localhost:9000/search/" + this.state.searchText)
+            .then(response => response.json()).then(response => this.props.history.push("/product/" + response.id));
+
+    };
 
     render() {
         return (
@@ -139,18 +125,6 @@ class Header extends Component {
                                     <a href="/">SHOP</a>
                                 </div>
 
-                                {/*<div className="search-top">*/}
-                                    {/*<div className="top-search"><a href="#0"><i className="ti-search"></i></a></div>*/}
-
-                                    {/*<div className="search-top">*/}
-                                        {/*<form className="search-form">*/}
-                                            {/*<input type="text" placeholder="Search here..." name="search"/>*/}
-                                            {/*<button  type="submit" value={this.state.searchText} onClick={()=>this.search()}><i className="ti-search"></i></button>*/}
-                                        {/*</form>*/}
-                                    {/*</div>*/}
-
-                                {/*</div>*/}
-
                                 <div className="mobile-nav"></div>
                             </div>
 
@@ -159,8 +133,11 @@ class Header extends Component {
                                 <div className="search-bar-top">
                                     <div className="search-bar">
 
-                                            <input name="search" placeholder="Search Products Here....." value={this.state.searchText} onChange={this.handleChangeText} type="search"/>
-                                            <button className="btnn" onClick={()=>this.search()}><i className="ti-search"></i></button>
+                                        <input name="search" placeholder="Search Products Here....."
+                                               value={this.state.searchText} onChange={this.handleChangeText}
+                                               type="search"/>
+                                        <button className="btnn" onClick={() => this.search()}><i
+                                            className="ti-search"></i></button>
 
                                     </div>
                                 </div>
@@ -170,8 +147,9 @@ class Header extends Component {
 
 
                                     <div className="sinlge-bar">
-                                        <a href="/user/details" className="single-icon"><i className="fa fa-user-circle-o"
-                                                                               aria-hidden="true"></i></a>
+                                        <a href="/user/details" className="single-icon"><i
+                                            className="fa fa-user-circle-o"
+                                            aria-hidden="true"></i></a>
                                     </div>
                                     <div className="sinlge-bar shopping">
                                         <a href="/cart" className="single-icon"><i className="ti-bag"></i> <span
@@ -210,7 +188,6 @@ class Header extends Component {
                                             <div className="navbar-collapse">
                                                 <div className="nav-inner">
                                                     <ul className="nav main-menu menu navbar-nav">
-                                                        {/*<li ><a href="#">Home</a></li>*/}
                                                         <li><a href="/">Top Deals</a></li>
                                                         <li><a href="/wishlist">Wishlist</a></li>
                                                         <li><a href="contact.html">Contact Us</a></li>

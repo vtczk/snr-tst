@@ -1,22 +1,12 @@
-
-
-
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
+import React, {Component} from "react";
 import '../css/animate.css';
 import '../css/bootstrap.css';
 import '../css/font-awesome.css';
-
 import '../css/flex-slider.min.css';
-//import '../css/jquery-ui.css';
 import '../css/jquery.fancybox.min.css';
 import '../css/style.css';
 import '../css/themify-icons.css';
 import '../css/reset.css';
-
-
 
 
 export default class Footer extends Component {
@@ -65,8 +55,6 @@ export default class Footer extends Component {
                         </div>
                     </div>
                 </section>
-
-
                 <footer className="footer">
 
                     <div className="footer-top section">
@@ -77,9 +65,12 @@ export default class Footer extends Component {
                                     <div className="single-footer about">
                                         <div className="logo">
                                             SHOP
-                                    </div>
-                                        <p className="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-                                        <p className="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+                                        </div>
+                                        <p className="text">Praesent dapibus, neque id cursus ucibus, tortor neque
+                                            egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
+                                            tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+                                        <p className="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span>
+                                        </p>
                                     </div>
 
                                 </div>

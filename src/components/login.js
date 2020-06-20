@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 
-
 import '../css/animate.css';
 import '../css/bootstrap.css';
 import '../css/font-awesome.css';
@@ -16,7 +15,6 @@ import {withRouter} from "react-router-dom";
 
 
 class Login extends Component {
-
 
     static contextType = GlobalContext;
 
@@ -67,7 +65,6 @@ class Login extends Component {
         window.location = 'http://localhost:9000/auth/provider/' + provider;
     }
 
-
     render() {
         return (
 
@@ -78,9 +75,6 @@ class Login extends Component {
                         <div className="login">
                             <h2>Sign In</h2>
                             <p>Sign In to our page</p>
-
-                            {/*<form className="form" method="post" action="#">*/}
-
                             <div className=" login col-lg-6 col-md-6 col-12">
                                 <div className="form-group ">
                                     <div className="logindetails">
@@ -104,8 +98,10 @@ class Login extends Component {
                                         </div>
                                     </div>
                                     <div className="content">
-                                        <a onClick={() => this.socialAuthenticate("facebook")} > <i className="fa fa-facebook-official fa-3x" aria-hidden="true"></i></a>
-                                        <a onClick={() => this.socialAuthenticate("google")} ><i className="fa fa-google-plus-square fa-3x" aria-hidden="true"></i></a>
+                                        <a onClick={() => this.socialAuthenticate("facebook")}> <i
+                                            className="fa fa-facebook-official fa-3x" aria-hidden="true"></i></a>
+                                        <a onClick={() => this.socialAuthenticate("google")}><i
+                                            className="fa fa-google-plus-square fa-3x" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
 
@@ -115,11 +111,8 @@ class Login extends Component {
 
                         </div>
                     </div>
-
-
                 </div>
             </section>
-
         )
             ;
     }

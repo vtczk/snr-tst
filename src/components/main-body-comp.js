@@ -14,7 +14,6 @@ import '../css/reset.css';
 import ProductListElement from "./product-comp"
 import RecentPost from "./recent-post-comp";
 
-
 class Categories extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +22,6 @@ class Categories extends Component {
             categoryId: this.props.id
         }
     }
-
     componentDidMount() {
         console.log(this.state.categoryId);
         fetch("http://localhost:9000/products/category/" + this.state.categoryId,
@@ -36,7 +34,6 @@ class Categories extends Component {
                 products: data
             }));
     };
-
     render() {
         return (
             <div>
